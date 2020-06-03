@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'sinhviens',
     ],
 
     /*
@@ -38,13 +38,22 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'sinhviens',
         ],
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'sinhviens',
             'hash' => false,
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        
+        'giangvien' => [
+            'driver' => 'session',
+            'provider' => 'giangviens',
         ],
     ],
 
@@ -66,9 +75,18 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'sinhviens' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Sinhvien::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+
+        'giangviens' => [
+            'driver' => 'eloquent',
+            'model' => App\Giangvien::class,
         ],
 
         // 'users' => [
@@ -93,8 +111,20 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'sinhviens' => [
+            'provider' => 'sinhviens',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'giangviens' => [
+            'provider' => 'giangviens',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
