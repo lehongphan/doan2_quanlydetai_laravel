@@ -90,6 +90,20 @@ class RegisterController extends Controller
         ]);
     }
 
+    protected function createSinhVien(array $data)
+    {
+        $this->validator($request->all())->validate();
+        Admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        return redirect('admin/sinhvien')
+        ->with('success','Blog created successfully.');
+    }
+
+    
+
     /**
      * @param Request $request
      *

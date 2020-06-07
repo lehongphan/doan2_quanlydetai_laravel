@@ -47,7 +47,7 @@ class LoginController extends Controller
      */
     public function showAdminLoginForm()
     {
-        return view('auth.login', [
+        return view('admin.login', [
             'url' => Config::get('constants.guards.admin')
         ]);
     }
@@ -57,7 +57,7 @@ class LoginController extends Controller
      */
     public function showWriterLoginForm()
     {
-        return view('auth.login', [
+        return view('giangvien.login', [
             'url' => Config::get('constants.guards.giangvien')
         ]);
     }

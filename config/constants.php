@@ -2,7 +2,8 @@
     return [
         'guards'=> [
             'admin' => 'admin',
-            'giangvien' => 'giangvien'
+            'giangvien' => 'giangvien',
+            'sinhvien' => 'sinhvien'
         ]
 
     ];

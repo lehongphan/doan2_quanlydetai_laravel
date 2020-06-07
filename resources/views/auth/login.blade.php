@@ -1,73 +1,74 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from themepixels.me/shamcey/app/page-signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 23 May 2020 05:56:58 GMT -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}</div>
+    <!-- Vendor css -->
+    <link href="{{ asset('lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
 
-                <div class="card-body">
-                    @isset($url)
+    <!-- Shamcey CSS -->
+    <!--<link href="{{ asset('css/app.css') }}" rel="stylesheet">-->
+    <link rel="stylesheet" href="{{ asset('css/shamcey.css') }}">
+  </head>
+
+  <body class="bg-gray-900">
+
+    <div class="signpanel-wrapper">
+      <div class="signbox">
+        <div class="signbox-header">
+          <h2>{{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}</h2>
+          <p class="mg-b-0">Sinh viên</p>
+        </div><!-- signbox-header -->
+        <div class="signbox-body">
+        @isset($url)
                     <form method="POST" action='{{ url("login/$url") }}' aria-label="{{ __('Login') }}">
                     @else
                     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                     @endisset
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
+              @csrf
+          <div class="form-group">
+            <label class="form-control-label">Email:</label>
+            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+            @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+            <!--<input type="id" type="email" name="email" placeholder="Enter your email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}">-->
+          </div><!-- form-group -->
+          <div class="form-group">
+            <label class="form-control-label">Password:</label>
+            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
+            <!--<input type="password" name="password" placeholder="Enter your password" class="form-control">-->
+          </div><!-- form-group -->
+          <div class="form-group">
+            <a href="#">Forgot password?</a>
+          </div><!-- form-group -->
+           <button class="btn btn-success btn-block">Sign In</button>
+        
+          <div class="tx-center bg-white b d pd-10 mg-t-40">Not yet a member? <a href="page-signup.html">Create an account</a></div>
+</form></div><!-- signbox-body -->
+      </div><!-- signbox -->
+    </div><!-- signpanel-wrapper -->
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+    <script src="{{ asset('lib/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('lib/popper.js/popper.js') }}"></script>
+    <script src="{{ asset('lib/bootstrap/bootstrap.js') }}"></script>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
+    <script src="{{ asset('js/shamcey.js') }}"></script>
+  </body>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+<!-- Mirrored from themepixels.me/shamcey/app/page-signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 23 May 2020 05:56:58 GMT -->
+</html>

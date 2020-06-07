@@ -49681,6 +49681,8 @@ module.exports = function(module) {
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+__webpack_require__(/*! ./shamcey */ "./resources/js/shamcey.js");
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -49818,6 +49820,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/shamcey.js":
+/*!*********************************!*\
+  !*** ./resources/js/shamcey.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+ * Shamcey v2.0.0 (https://themepixels.me/shamcey)
+ * Copyright 2017-2018 ThemePixels
+ * Licensed under ThemeForest License
+ */
+
+
+$(document).ready(function () {
+  // custom scrollbar style
+  $('.sh-sideleft-menu').perfectScrollbar(); // showing sub navigation to nav with sub nav.
+
+  $('.with-sub.active + .nav-sub').slideDown(); // showing sub menu while hiding others
+
+  $('.with-sub').on('click', function (e) {
+    e.preventDefault();
+    var nextElem = $(this).next();
+
+    if (!nextElem.is(':visible')) {
+      $('.nav-sub').slideUp();
+    }
+
+    nextElem.slideToggle();
+  }); // hide left menu bar
+
+  $('#navicon').on('click', function (e) {
+    e.preventDefault();
+    $('body').toggleClass('hide-left');
+  }); // push/hide left menu bar in mobile
+
+  $('#naviconMobile').on('click', function (e) {
+    e.preventDefault();
+    $('body').toggleClass('show-left');
+  });
+});
 
 /***/ }),
 

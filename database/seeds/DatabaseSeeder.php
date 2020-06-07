@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -9,8 +10,16 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        // $this->call(UserSeeder::class);
+    
+    public function run() {
+        $faker = Faker\Factory::create();
+    
+        for($i = 0; $i < 1000; $i++) {
+            App\Sinhvien::create([                
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'password' => Hash::make('123456'),
+            ]);
+        }
     }
 }
