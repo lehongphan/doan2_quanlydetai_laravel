@@ -49,7 +49,7 @@
             </a>
           </li><!-- nav-item -->
           <li class="nav-item">
-            <a href="{{ url('admin/sinhvien') }}" class="nav-link {{ 'giangvien/detai' ==request()->path() ? 'active' : ''}}">
+            <a href="{{ route('sinhvien.index') }}" class="nav-link {{ 'giangvien/detai' ==request()->path() ? 'active' : ''}}">
               <i class="icon ion-ios-bookmarks-outline"></i>
               <span>Sinh viên</span>
               
@@ -139,7 +139,7 @@
               <div class="media align-items-center">
                 <img src="{{asset('img/img1.jpg')}}" class="wd-60 ht-60 rounded-circle bd pd-5" alt="">
                 <div class="media-body">
-                  <h6 class="tx-inverse tx-15 mg-b-5">{{ Auth::user()->name }}</h6>
+                  <h6 class="tx-inverse tx-15 mg-b-5">Auth::guard('admin')->user()->name</h6>
                   <p class="mg-b-0 tx-12">kdouglas@domain.com</p>
                 </div><!-- media-body -->
               </div><!-- media -->
