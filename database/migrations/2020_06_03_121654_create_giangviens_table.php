@@ -14,9 +14,16 @@ class CreateGiangviensTable extends Migration
     public function up()
     {
         Schema::create('giangviens', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
+            $table->increments('maGV');
+            $table->unsignedInteger('maKhoa');
+            $table->unsignedInteger('maHH');
+            $table->unsignedInteger('maHV');
+            $table->string('hoLot');
+            $table->string('ten');
+            $table->date('ngaySinh');
+            $table->string('gioiTinh');
             $table->string('email')->unique();
+            $table->longText('queQuan');
             $table->string('password');
             $table->boolean('is_gv')->default(true);
             $table->rememberToken();

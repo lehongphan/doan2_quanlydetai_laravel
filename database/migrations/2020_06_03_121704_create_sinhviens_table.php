@@ -14,11 +14,16 @@ class CreateSinhviensTable extends Migration
     public function up()
     {
         Schema::create('sinhviens', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
+            $table->increments('maSV');
+            $table->unsignedInteger('maLop');
+            $table->string('hoLot');
+            $table->string('ten');
+            $table->date('ngaySinh');
+            $table->string('gioiTinh');
             $table->string('email')->unique();
+            $table->longText('queQuan');
             $table->string('password');
-            $table->boolean('is_sv')->default(true);
+            $table->boolean('is_gv')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
