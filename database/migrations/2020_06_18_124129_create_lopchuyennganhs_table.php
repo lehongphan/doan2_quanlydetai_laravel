@@ -16,7 +16,8 @@ class CreateLopchuyennganhsTable extends Migration
         Schema::create('lopchuyennganhs', function (Blueprint $table) {
             $table->increments('maLop');
             $table->unsignedInteger('maCN');
-            $table->Integer('khoa')->unsigned();           
+            $table->Integer('khoa')->unsigned();    
+            $table->string('tenLop');       
             $table->string('nhiemKy');
             $table->timestamps();
         });

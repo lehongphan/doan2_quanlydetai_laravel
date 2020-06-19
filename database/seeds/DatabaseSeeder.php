@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
                 //'password' => Hash::make('123456'),
             //]);
        // }
-       DB::table('hochams')->insert([
+    DB::table('hochams')->insert([
         'maHH' => '1',
         'tenHH' => 'Giáo Sư'
     ]);

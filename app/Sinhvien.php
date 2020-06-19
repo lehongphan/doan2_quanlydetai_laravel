@@ -22,8 +22,12 @@ class Sinhvien extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'ten','maLop', 'email', 'password',
     ];
+    public function getLopChuyenNganh()
+    {
+        return $this->belongsTo('App\Lopchuyennganh', 'maLop','maLop');
+    }
 
     /**
      * The attributes that are mass assignable.

@@ -1,4 +1,4 @@
-@extends('admin.home')
+@extends('admin.layout')
 
 @section('sinhvien')
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#themSinhVien">Thêm</button>
@@ -8,6 +8,8 @@
 <div class="card bd-primary mg-t-20">
   <div class="card-header bg-primary tx-white">Thông tin sinh viên</div>
   <div class="card-body pd-sm-30">
+    
+    
 
     <div class="table-wrapper">
       <table id="datatable1" class="table display responsive nowrap">
@@ -15,6 +17,8 @@
           <tr>
             <th class="wd-15p">Mã sinh viên</th>
             <th class="wd-15p">Tên sinh viên</th>
+            <th class="wd-15p">Mã Lớp</th>
+            <th class="wd-15p">Tên chuyên ngành</th>
             <th class="wd-20p">Email</th>
             <th class="wd-20p">Hành động</th>
           </tr>
@@ -22,19 +26,23 @@
         <tbody>
 
 
-          <?php $no=1; ?>
-          @foreach ($post as $key => $value)
+          
+          @foreach ($sinhvien as $key => $value)
           <tr>
-            <td>{{$no++}}</td>
-            <td>{{ $value->name }}</td>
+            <td>{{$value->maSV}}</td>
+            <td>{{ $value->ten }}</td>
+            <td>{{ $value->getLopChuyenNganh->tenLop }}</td>
+            @foreach ($lopchuyennganh as $key => $valuee)
+            <td>{{ $valuee->getChuyenNganh->tenCN }}</td>
+            @endforeach
             <td>{{ $value->email }}</td>
             <td>
               <button type="button" class="btn btn-primary edit-model" data-toggle="modal"
-                data-target="#suaSinhVien{{$value->id}}">Sửa</button>
+                data-target="#suaSinhVien{{$value->maSV}}">Sửa</button>
             </td>
 
           </tr>
-          <div class="modal fade" id="suaSinhVien{{$value->id}}" tabindex="-1" role="dialog"
+          <div class="modal fade" id="suaSinhVien{{$value->maSV}}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
@@ -47,15 +55,15 @@
                 <div class="modal-body">
                   <div class="card-body">
 
-                    {{ Form::model($post,['route'=>['sinhvien.update',$value->id],'method'=>'PATCH']) }}
+                    {{ Form::model($sinhvien,['route'=>['sinhvien.update',$value->maSV],'method'=>'PATCH']) }}
                     <div class="row">
                       <div class="col-sm-2">
-                          {!! form::label('name','Name') !!}
+                          {!! form::label('ten','Ten') !!}
                       </div>
                       <div class="col-sm-10">
-                          <div class="form-group {{ $errors->has('name') ? 'has-error' : "" }}">
-                              {{ Form::text('name',$value->name, ['class'=>'form-control', 'id'=>'name', 'placeholder'=>'name.....']) }}
-                              {{ $errors->first('name', '<p class="help-block">:message</p>') }}
+                          <div class="form-group {{ $errors->has('ten') ? 'has-error' : "" }}">
+                              {{ Form::text('ten',$value->ten, ['class'=>'form-control', 'id'=>'ten', 'placeholder'=>'ten.....']) }}
+                              {{ $errors->first('ten', '<p class="help-block">:message</p>') }}
                           </div>
                       </div>
                   </div>
@@ -71,6 +79,12 @@
                           </div>
                       </div>
                   </div>
+
+
+
+
+                  
+                  
                  
                   <div class="form-group">
                       {{ Form::button(isset($model)? 'Update' : 'save' , ['class'=>'btn btn-success', 'type'=>'submit']) }}

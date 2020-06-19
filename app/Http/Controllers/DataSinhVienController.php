@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Sinhvien;
+use App\Lopchuyennganh;
 use Illuminate\Support\Facades\Hash;
 class DataSinhVienController extends Controller
 {
@@ -14,8 +15,16 @@ class DataSinhVienController extends Controller
      */
     public function index()
     {
-        $post = Sinhvien::all();
-        return view('admin.sinhvien',compact('post'));
+
+        //$maLop=Lopchuyennganh::get('nhiemKy',0);
+        //$exams = Sinhvien::getlopchuyennganh($maLop)->with('nhiemKy')->get();
+        //$classes = Lopchuyennganh::pluck('nhiemKy', 'maLop');
+        //$iclass = $exams;
+
+
+        $sinhvien = Sinhvien::select('maSV','maLop','hoLot','ten','ngaySinh','gioiTinh','email','queQuan','password','is_gv','remember_token','created_at','updated_at')->get() ;
+        $lopchuyennganh = Lopchuyennganh::all();
+        return view('admin.sinhvien',compact('sinhvien','lopchuyennganh'));
     }
 
     /**
@@ -75,13 +84,13 @@ class DataSinhVienController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $maSV)
     {
         $this->validate($request,[
             'name' => 'required',
             'email' => 'required',
           ]);
-          Sinhvien::find($id)->update($request->all());
+          Sinhvien::find($maSV)->update($request->all());
           return redirect()->route('sinhvien.index')->with('success','Post update success');
     }
 

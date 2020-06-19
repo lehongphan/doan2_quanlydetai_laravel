@@ -22,7 +22,7 @@ class Giangvien extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'ten', 'email', 'password',
     ];
 
     /**

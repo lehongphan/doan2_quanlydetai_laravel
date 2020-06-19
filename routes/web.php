@@ -2,7 +2,7 @@
 use App\Sinhvien;
 Route::view('/', 'welcome');
 Auth::routes();
-Route::resource('admin/sinhvien','DataSinhVienController');
+
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('login.admin');
 Route::get('/login/giangvien', 'Auth\LoginController@showWriterLoginForm')->name('login.giangvien');
 Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm')->name('register.admin');
@@ -21,6 +21,7 @@ Route::post('admin/sinhvien/register', 'Auth\RegisterController@createSinhVien')
 Route::view('/home', 'home')->middleware('auth');
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/admin', 'admin.home');
+    Route::resource('/admin/sinhvien','DataSinhVienController');
     
 });
 Route::post('/giangvien/detai', 'PagesController@giangVienDeTai');

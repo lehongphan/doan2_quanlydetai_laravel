@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-sm-2">
-        {!! form::label('name','Name') !!}
+        {!! form::label('ten','Ten') !!}
     </div>
     <div class="col-sm-10">
-        <div class="form-group {{ $errors->has('name') ? 'has-error' : "" }}">
-            {{ Form::text('name',NULL, ['class'=>'form-control', 'id'=>'name', 'placeholder'=>'name.....']) }}
-            {{ $errors->first('name', '<p class="help-block">:message</p>') }}
+        <div class="form-group {{ $errors->has('ten') ? 'has-error' : "" }}">
+            {{ Form::text('ten',NULL, ['class'=>'form-control', 'id'=>'ten', 'placeholder'=>'ten.....']) }}
+            {{ $errors->first('ten', '<p class="help-block">:message</p>') }}
         </div>
     </div>
 </div>
@@ -32,6 +32,15 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-10">
+      {{Form::radio('name', 'Nam')}} Nam 
+      {{Form::radio('name', 'Nữ')}} Nữ 
+    </div>
+
+  </div>
 <div class="form-group">
     {{ Form::button(isset($model)? 'Update' : 'save' , ['class'=>'btn btn-success', 'type'=>'submit']) }}
 </div>
