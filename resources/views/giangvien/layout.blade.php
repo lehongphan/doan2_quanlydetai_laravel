@@ -117,7 +117,7 @@
         <div class="sh-pagetitle-icon"><i class="icon ion-ios-home"></i></div>
         <div class="sh-pagetitle-title">
           <span>Xin Chào</span>
-          <h2>Lê Hồng Phan</h2>
+          <h2>{{Auth::guard('giangvien')->user()->hoLot}} {{Auth::guard('giangvien')->user()->ten}}</h2>
         </div><!-- sh-pagetitle-left-title -->
       </div><!-- sh-pagetitle-left -->
     </div><!-- sh-pagetitle -->

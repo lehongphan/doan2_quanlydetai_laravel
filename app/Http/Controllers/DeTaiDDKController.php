@@ -16,6 +16,7 @@ class DeTaiDDKController extends Controller
     {
         $detai = DB::table('dangkydetais')
         ->join('detais', 'dangkydetais.maDeTai', '=', 'detais.maDeTai')
+        ->join('sinhviens', 'dangkydetais.maSV', '=', 'sinhviens.maSV')
         ->get();
         return view('giangvien.detaiddk',compact('detai'));
     }
@@ -91,8 +92,9 @@ class DeTaiDDKController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($maDangKyDT)
     {
-        //
+        Dangkydetai::where('maDangKyDT',$maDangKyDT)->delete();
+        return redirect()->route('detaiddk.index')->with('success','Post update success');
     }
 }

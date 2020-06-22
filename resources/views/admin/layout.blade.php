@@ -106,7 +106,7 @@
                 <img src="{{asset('img/img1.jpg')}}" class="wd-60 ht-60 rounded-circle bd pd-5" alt="">
                 <div class="media-body">
                   <h6 class="tx-inverse tx-15 mg-b-5">{{Auth::guard('admin')->user()->name}}</h6>
-                  <p class="mg-b-0 tx-12">lehongphan@gmail.com</p>
+                  <p class="mg-b-0 tx-12">{{Auth::guard('admin')->user()->email}}</p>
                 </div><!-- media-body -->
               </div><!-- media -->
               <hr>

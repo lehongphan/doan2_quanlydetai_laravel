@@ -91,10 +91,6 @@
   
       <div class="sh-mainpanel">
         <div class="sh-breadcrumb">
-          <nav class="breadcrumb">
-            <a class="breadcrumb-item" href="index.html">Admin</a>
-            <span class="breadcrumb-item active">Dashboard</span>
-          </nav>
         </div><!-- sh-breadcrumb -->
         <div class="sh-pagetitle">
           <div class="input-group">
@@ -104,7 +100,7 @@
             <div class="sh-pagetitle-icon"><i class="icon ion-ios-home"></i></div>
             <div class="sh-pagetitle-title">
               <span>Xin Chào</span>
-              <h2>Lê Hồng Phan</h2>
+              <h2>{{Auth::guard()->user()->hoLot}} {{Auth::guard()->user()->ten}}</h2>
             </div><!-- sh-pagetitle-left-title -->
           </div><!-- sh-pagetitle-left -->
         </div><!-- sh-pagetitle -->
