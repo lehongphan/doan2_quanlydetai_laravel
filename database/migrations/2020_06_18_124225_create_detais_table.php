@@ -16,9 +16,8 @@ class CreateDetaisTable extends Migration
         Schema::create('detais', function (Blueprint $table) {
             $table->increments('maDeTai');
             $table->unsignedInteger('maGV');
-            $table->String('tenDetai');
-            $table->longText('thongTinDeTai');
-            $table->boolean('trangThai')->default(False);            
+            $table->String('tenDeTai');
+            $table->longText('thongTinDeTai');          
             $table->timestamps();
         });
     }

@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Lopchuyennganh extends Authenticatable
+class Nganh extends Authenticatable
 
 {
     use Notifiable;
+    protected $primaryKey = 'maNganh';
 
     /**
      * The attributes that are mass assignable.
@@ -16,15 +17,16 @@ class Lopchuyennganh extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'khoa','nhiemKy',
-    ]; 
+        'maKhoa','tenNganh','soNamDT'
+    ];
     
-    public function sinhVien()
+    public function getKhoa()
     {
-        return $this->hasMany('App\Sinhvien', 'maLop','maLop');
+    return $this->belongsTo('App\Khoa', 'maKhoa','maKhoa');
     }
     public function getChuyenNganh()
     {
-        return $this->belongsTo('App\Chuyennganh', 'maCN','maCN');
+    return $this->hasMany('App\Chuyennganh', 'maNganh','maNganh');
     }
+    
 }

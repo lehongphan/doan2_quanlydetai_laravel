@@ -9,6 +9,7 @@ class Chuyennganh extends Authenticatable
 
 {
     use Notifiable;
+    protected $primaryKey = 'maCN';
 
     /**
      * The attributes that are mass assignable.
@@ -16,11 +17,15 @@ class Chuyennganh extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'tenCN'
+        'tenCN','maNganh'
     ]; 
     public function getLopChuyenNganh()
     {
         return $this->hasMany('App\Lopchuyennganh', 'maCN','maCN');
     }
+     public function getChuyenNganh()
+     {
+     return $this->belongsTo('App\Nganh', 'maNganh','maNganh');
+     }
     
 }

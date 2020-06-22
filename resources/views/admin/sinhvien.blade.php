@@ -1,15 +1,18 @@
 @extends('admin.layout')
 
 @section('sinhvien')
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#themSinhVien">Thêm</button>
 
 
 
 <div class="card bd-primary mg-t-20">
   <div class="card-header bg-primary tx-white">Thông tin sinh viên</div>
+  <div class="ml-md-auto">
+      <button type="button" class="btn btn-primary mt-4 mr-4" data-toggle="modal" data-target="#themSinhVien">Thêm Sinh Viên</button>
+      </div>
+
   <div class="card-body pd-sm-30">
-    
-    
+
+
 
     <div class="table-wrapper">
       <table id="datatable1" class="table display responsive nowrap">
@@ -17,8 +20,7 @@
           <tr>
             <th class="wd-15p">Mã sinh viên</th>
             <th class="wd-15p">Tên sinh viên</th>
-            <th class="wd-15p">Mã Lớp</th>
-            <th class="wd-15p">Tên chuyên ngành</th>
+            <th class="wd-15p">Tên Lớp</th>
             <th class="wd-20p">Email</th>
             <th class="wd-20p">Hành động</th>
           </tr>
@@ -26,15 +28,12 @@
         <tbody>
 
 
-          
+
           @foreach ($sinhvien as $key => $value)
           <tr>
             <td>{{$value->maSV}}</td>
             <td>{{ $value->ten }}</td>
             <td>{{ $value->getLopChuyenNganh->tenLop }}</td>
-            @foreach ($lopchuyennganh as $key => $valuee)
-            <td>{{ $valuee->getChuyenNganh->tenCN }}</td>
-            @endforeach
             <td>{{ $value->email }}</td>
             <td>
               <button type="button" class="btn btn-primary edit-model" data-toggle="modal"
@@ -58,37 +57,35 @@
                     {{ Form::model($sinhvien,['route'=>['sinhvien.update',$value->maSV],'method'=>'PATCH']) }}
                     <div class="row">
                       <div class="col-sm-2">
-                          {!! form::label('ten','Ten') !!}
+                        {!! form::label('ten','Ten') !!}
                       </div>
                       <div class="col-sm-10">
-                          <div class="form-group {{ $errors->has('ten') ? 'has-error' : "" }}">
-                              {{ Form::text('ten',$value->ten, ['class'=>'form-control', 'id'=>'ten', 'placeholder'=>'ten.....']) }}
-                              {{ $errors->first('ten', '<p class="help-block">:message</p>') }}
-                          </div>
+                        <div class="form-group {{ $errors->has('ten') ? 'has-error' : "" }}">
+                          {{ Form::text('ten',$value->ten, ['class'=>'form-control', 'id'=>'ten', 'placeholder'=>'ten.....']) }}
+                          {{ $errors->first('ten', '<p class="help-block">:message</p>') }}
+                        </div>
                       </div>
-                  </div>
-                  
-                  <div class="row">
+                    </div>
+
+                    <div class="row">
                       <div class="col-sm-2">
-                          {!! form::label('email','Email') !!}
+                        {!! form::label('email','Email') !!}
                       </div>
                       <div class="col-sm-10">
-                          <div class="form-group {{ $errors->has('email') ? 'has-error' : "" }}">
-                              {{ Form::text('email',$value->email, ['class'=>'form-control', 'id'=>'email', 'placeholder'=>'Email....']) }}
-                              {{ $errors->first('email', '<p class="help-block">:message</p>') }}
-                          </div>
+                        <div class="form-group {{ $errors->has('email') ? 'has-error' : "" }}">
+                          {{ Form::text('email',$value->email, ['class'=>'form-control', 'id'=>'email', 'placeholder'=>'Email....']) }}
+                          {{ $errors->first('email', '<p class="help-block">:message</p>') }}
+                        </div>
                       </div>
-                  </div>
+                    </div>
+                    {!! Form::select('maLop', $classes, $iclass , ['placeholder' => 'Pick a class...','maLop' =>
+                    'form-control select2','required' => 'true']) !!}
 
 
 
-
-                  
-                  
-                 
-                  <div class="form-group">
+                    <div class="form-group">
                       {{ Form::button(isset($model)? 'Update' : 'save' , ['class'=>'btn btn-success', 'type'=>'submit']) }}
-                  </div>
+                    </div>
 
                     {{form::close() }}
                   </div>
@@ -116,7 +113,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Chỉnh sửa thông tin sinh viên</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Thêm sinh viên</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -124,7 +121,7 @@
       <div class="modal-body">
         <div class="card-body">
 
-          {{Form::open(['route'=>'sinhvien.store', 'method'=>'POST']) }}
+          {{Form::open(['route'=>'sinhvien.store', 'method'=>'post']) }}
           @include('admin.form')
 
           {{form::close() }}

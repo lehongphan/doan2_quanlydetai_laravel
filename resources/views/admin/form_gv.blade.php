@@ -66,11 +66,34 @@
 </div>
 <div class="row">
     <div class="col-sm-2">
-        {!! form::label('maLop','Lớp: ') !!}
+        {!! form::label('maHH','Học hàm: ') !!}
     </div>
     <div class="col-sm-10">
-        <div class="form-group {{ $errors->has('maLop') ? 'has-error' : "" }}">
-           {!! Form::select('maLop', $classes ?? '', $iclass , ['placeholder' => 'Pick a class...','maLop' =>
+        <div class="form-group {{ $errors->has('maHH') ? 'has-error' : "" }}">
+           {!! Form::select('maHH', $hocham ?? '', $tenhh , ['placeholder' => 'Pick a class...','maHH' =>
+                    'form-control select2','required' => 'true']) !!}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-2">
+        {!! form::label('maHV','Học vị: ') !!}
+    </div>
+    <div class="col-sm-10">
+        <div class="form-group {{ $errors->has('maHV') ? 'has-error' : "" }}">
+           {!! Form::select('maHV', $hocvi ?? '', $tenhv , ['placeholder' => 'Pick a class...','maHV' =>
+                    'form-control select2','required' => 'true']) !!}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2">
+        {!! form::label('maKhoa','Khoa: ') !!}
+    </div>
+    <div class="col-sm-10">
+        <div class="form-group {{ $errors->has('maKhoa') ? 'has-error' : "" }}">
+           {!! Form::select('maKhoa', $khoa ?? '', $tenkhoa , ['placeholder' => 'Pick a class...','maKhoa' =>
                     'form-control select2','required' => 'true']) !!}
         </div>
     </div>

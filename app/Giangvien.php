@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Giangvien extends Authenticatable
 {
     protected $table = 'giangviens';
+    protected $primaryKey = "maGV";
     use Notifiable;
     
 
@@ -22,7 +23,7 @@ class Giangvien extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'ten', 'email', 'password',
+        'maKhoa','maHH','maHV','hoLot','ten','ngaySinh','gioiTinh','email','queQuan','password',
     ];
 
     /**
@@ -33,4 +34,20 @@ class Giangvien extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function deTai()
+    {
+    return $this->hasMany('App\Detai', 'maGV','maGV');
+    }
+    public function getHocHam()
+    {
+    return $this->belongsTo('App\Hocham', 'maHH','maHH');
+    }
+    public function getHocVi()
+    {
+    return $this->belongsTo('App\Hocvi', 'maHV','maHV');
+    }
+    public function getKhoa()
+    {
+    return $this->belongsTo('App\Khoa', 'maKhoa','maKhoa');
+    }
 }

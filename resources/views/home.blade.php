@@ -1,17 +1,12 @@
-@extends('layouts.auth')
+@extends('layout')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                     Hi there, regular sinhvien
-                </div>
-            </div>
-        </div>
+@section('home')
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1>Quản lý đề tài trang sinh viên</h1>
+      <p class="lead text-muted">
+      </p>
+      
     </div>
-</div>
+  </section>
 @endsection

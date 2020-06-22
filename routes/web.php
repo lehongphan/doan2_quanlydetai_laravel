@@ -1,6 +1,6 @@
 <?php
 use App\Sinhvien;
-Route::view('/', 'welcome');
+Route::view('/', 'auth/login');
 Auth::routes();
 
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('login.admin');
@@ -17,16 +17,22 @@ Route::post('admin/sinhvien/register', 'Auth\RegisterController@createSinhVien')
 
 
 
-
-Route::view('/home', 'home')->middleware('auth');
+Route::group(['middleware' => 'auth'], function () {
+    Route::view('/home', 'home');
+    Route::resource('/detaisv','DeTaiSVController');
+});
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/admin', 'admin.home');
     Route::resource('/admin/sinhvien','DataSinhVienController');
+    Route::resource('/admin/giangvien','DataGiangVienController');
+    Route::resource('/admin/khoa','KhoaController');
+    Route::resource('/admin/nganh','NganhController');
+    Route::resource('/admin/chuyennganh','ChuyenNganhController');
     
 });
-Route::post('/giangvien/detai', 'PagesController@giangVienDeTai');
 Route::group(['middleware' => 'auth:giangvien'], function () {
     Route::view('/giangvien', 'giangvien.home');
-    Route::view('/giangvien/detai', 'giangvien.detai');
+    Route::resource('/giangvien/detai','DeTaiController');
+    Route::resource('/giangvien/detaiddk','DeTaiDDKController');
     
 });

@@ -27,8 +27,8 @@
     <div class="signpanel-wrapper">
       <div class="signbox">
         <div class="signbox-header">
-          <h2>{{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}</h2>
-          <p class="mg-b-0">Giảng viên nè   !</p>
+          <h2>{{ __('Đăng nhập') }}</h2>
+          <p class="mg-b-0">Giảng viên</p>
         </div><!-- signbox-header -->
         <div class="signbox-body">
         @isset($url)
@@ -50,7 +50,7 @@
             <!--<input type="id" type="email" name="email" placeholder="Enter your email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}">-->
           </div><!-- form-group -->
           <div class="form-group">
-            <label class="form-control-label">Password:</label>
+            <label class="form-control-label">Mật khẩu:</label>
             <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -60,12 +60,7 @@
                                 @endif
             <!--<input type="password" name="password" placeholder="Enter your password" class="form-control">-->
           </div><!-- form-group -->
-          <div class="form-group">
-            <a href="#">Forgot password?</a>
-          </div><!-- form-group -->
-           <button class="btn btn-success btn-block">Sign In</button>
-        
-          <div class="tx-center bg-white b d pd-10 mg-t-40">Not yet a member? <a href="page-signup.html">Create an account</a></div>
+           <button class="btn btn-success btn-block">Đăng Nhập</button>
 </form></div><!-- signbox-body -->
       </div><!-- signbox -->
     </div><!-- signpanel-wrapper -->
