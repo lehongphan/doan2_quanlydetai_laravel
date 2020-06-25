@@ -29,7 +29,6 @@ class DeTaiSVController extends Controller
     */
     public function create()
     {
-    //
     }
 
     /**
@@ -104,10 +103,7 @@ class DeTaiSVController extends Controller
 
     return redirect()->route('profile.index',['username'=>$user->username])
     ->with('info','Friend request sent');
-
     }
-
-    
 }
 
     

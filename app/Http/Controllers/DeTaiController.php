@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Detai;
 use App\Dangkydetai;
+use Auth;
 use Illuminate\Http\Request;
 
 class DeTaiController extends Controller
@@ -14,11 +15,11 @@ class DeTaiController extends Controller
      */
     public function index()
     {
-        $dangkydetai = Dangkydetai::all();
-        $detai = Detai::all();
+        $magv=Auth::guard('giangvien')->user()->maGV;
+        $detai = Detai::where('maGV',$magv)->get();
 
         
-        return view('giangvien.detai',compact('detai','dangkydetai'));
+        return view('giangvien.detai',compact('detai'));
     }
 
     /**

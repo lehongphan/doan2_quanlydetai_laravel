@@ -5,6 +5,7 @@ use App\Detai;
 use App\Dangkydetai;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 class DeTaiDDKController extends Controller
 {
     /**
@@ -14,10 +15,10 @@ class DeTaiDDKController extends Controller
      */
     public function index()
     {
+        $magv=Auth::guard('giangvien')->user()->maGV;
         $detai = DB::table('dangkydetais')
         ->join('detais', 'dangkydetais.maDeTai', '=', 'detais.maDeTai')
-        ->join('sinhviens', 'dangkydetais.maSV', '=', 'sinhviens.maSV')
-        ->get();
+        ->join('sinhviens', 'dangkydetais.maSV', '=', 'sinhviens.maSV')->get()->where('maGV',$magv);
         return view('giangvien.detaiddk',compact('detai'));
     }
 
