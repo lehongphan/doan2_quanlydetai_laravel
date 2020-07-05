@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="{{ asset('css/Shamcey.css') }}">
   <link href="{{ asset('lib/datatables/jquery.dataTables.css') }}" rel="stylesheet">
   <link href="{{ asset('lib/select2/css/select2.min.css') }}" rel="stylesheet">
-  
+
 
 
 
@@ -77,8 +77,8 @@
 
   <div class="sh-headpanel">
     <div class="sh-headpanel-right">
-      
-      
+
+
       <div class="dropdown dropdown-profile">
         <a href="#" data-toggle="dropdown" class="dropdown-link">
           <img src="{{asset('img/img1.jpg')}}" class="wd-60 rounded-circle" alt="">
@@ -87,7 +87,8 @@
           <div class="media align-items-center">
             <img src="{{asset('img/img1.jpg')}}" class="wd-60 ht-60 rounded-circle bd pd-5" alt="">
             <div class="media-body">
-              <h6 class="tx-inverse tx-15 mg-b-5">{{Auth::guard('giangvien')->user()->hoLot}} {{Auth::guard('giangvien')->user()->ten}}</h6>
+              <h6 class="tx-inverse tx-15 mg-b-5">{{Auth::guard('giangvien')->user()->hoLot}}
+                {{Auth::guard('giangvien')->user()->ten}}</h6>
               <p class="mg-b-0 tx-12">{{Auth::guard('giangvien')->user()->email}}</p>
             </div><!-- media-body -->
           </div><!-- media -->
@@ -107,11 +108,11 @@
 
   <div class="sh-mainpanel">
     <div class="sh-breadcrumb">
-      
+
     </div><!-- sh-breadcrumb -->
     <div class="sh-pagetitle">
       <div class="input-group">
-       
+
       </div><!-- input-group -->
       <div class="sh-pagetitle-left">
         <div class="sh-pagetitle-icon"><i class="icon ion-ios-home"></i></div>
@@ -122,16 +123,18 @@
       </div><!-- sh-pagetitle-left -->
     </div><!-- sh-pagetitle -->
     @yield('home')
-    
+
     @yield('detai')
 
 
-    
+
+
+
   </div><!-- sh-mainpanel -->
   <div class="sh-footer">
-      <div>Copyright &copy; 2020. </div>
-      <div class="mg-t-10 mg-md-t-0">Designed by: <a href="#">Lê Hồng Phan</a></div>
-    </div><!-- sh-footer -->
+    <div>Copyright &copy; 2020. </div>
+    <div class="mg-t-10 mg-md-t-0">Designed by: <a href="#">Lê Hồng Phan</a></div>
+  </div><!-- sh-footer -->
 
   <script src="{{ asset('lib/jquery/jquery.js') }}"></script>
   <script src="{{ asset('lib/popper.js/popper.js') }}"></script>
@@ -158,16 +161,28 @@
             lengthMenu: '_MENU_ dòng/trang',
           }
         });
-        $('.edit-model').on('click',function(){
-    var model_data= $(this).data('info').split(',');
-    $('#id').val(model_data[0]);
-    $('#name').val(model_data[1]);
-    $('#email').val(model_data[2]);
 
   });
-
-      });
   </script>
+  <script>
+    $(function() {
+        'use strict';
+
+        $('#datatable2').DataTable({
+          responsive: true,
+          language: {
+            searchPlaceholder: 'Search...',
+            sSearch: '',
+            lengthMenu: '_MENU_ dòng/trang',
+          }
+        });
+
+  });
+  </script>
+ 
+
+@yield('script')
+
 
 </body>
 

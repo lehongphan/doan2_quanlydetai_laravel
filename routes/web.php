@@ -34,5 +34,6 @@ Route::group(['middleware' => 'auth:giangvien'], function () {
     Route::view('/giangvien', 'giangvien.home');
     Route::resource('/giangvien/detai','DeTaiController');
     Route::resource('/giangvien/detaiddk','DeTaiDDKController');
+    Route::post('/giangvien/detai/nienkhoa', 'DeTaiController@nienkhoa')->name('detai.nienkhoa');
     
 });
